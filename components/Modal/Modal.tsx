@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from 'react';
-// import { useRouter } from "next/navigation";
 import css from './Modal.module.css'
 
 interface ModalProps {

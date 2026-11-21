@@ -5,7 +5,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import Link from 'next/link';
-import { fetchNotes } from '@/lib/api'
+import { fetchNotes } from '@/lib/api/clientApi'
 import type { NoteTag } from '@/types/note';
 import SearchBox from '@/components/SearchBox/SearchBox'
 import NoteList from '@/components/NoteList/NoteList'
