@@ -3,6 +3,8 @@ import { nextServer } from './api';
 import { User } from '@/types/user';
 import { Note, NoteTag} from '@/types/note'
 
+// request & response types
+
 interface Response {
     notes: Note[]
     totalPages: number
@@ -14,6 +16,8 @@ interface FetchNotesArgs {
     perPage?: number;
     tag?: NoteTag | 'all'; 
 }
+
+// notes api
 
 export const fetchNotes = async ({
     search = "",
@@ -48,6 +52,8 @@ export const fetchNoteById = async (id: string) => {
   return data;
 };
 
+// auth & session api
+
 export const checkSession = async () => {
   const cookieStore = await cookies();
   const res = await nextServer.get('/auth/session', {
@@ -57,6 +63,8 @@ export const checkSession = async () => {
   });
   return res;
 };
+
+// users api
 
 export const getMe = async (): Promise<User> => {
   const cookieStore = await cookies();
