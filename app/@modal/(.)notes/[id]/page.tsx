@@ -3,12 +3,8 @@ import {
   HydrationBoundary,
   dehydrate,
 } from "@tanstack/react-query";
-import { fetchNoteById } from '@/lib/api/api';
+import { fetchNoteById } from '@/lib/api/serverApi';
 import NotePreviewClient from './NotePreview.client';
-// import Modal from '@/components/Modal/Modal';
-// // import type { Note }
-// import { useRouter } from "next/navigation";
-
 
 type Props = {
   params: Promise<{ id: string }>;

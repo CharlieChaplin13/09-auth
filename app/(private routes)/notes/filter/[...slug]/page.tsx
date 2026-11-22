@@ -1,4 +1,3 @@
-
 import { Metadata } from "next"
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import NotesClient from "./Notes.client";
