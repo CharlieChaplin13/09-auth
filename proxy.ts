@@ -33,27 +33,18 @@ export async function proxy(request: NextRequest) {
           const parsed = parseSetCookie(cookieStr);
           
           if (parsed.value) {
-		        cookieStore.set(parsed.name, parsed.value, parsed);
             parsedCookies.push(parsed);
 			    }
         }
 
         if (isPublicRoute) {
-          const response = NextResponse.redirect(new URL('/profile', request.url), {
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
+          const response = NextResponse.redirect(new URL('/', request.url));
           parsedCookies.forEach((c) => response.cookies.set(c.name, c.value!, c));
           return response;
         }
 
         if (isPrivateRoute) {
-        const response = NextResponse.next({
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
+        const response = NextResponse.next();
           parsedCookies.forEach((c) => response.cookies.set(c.name, c.value!, c));
           return response;
         }
@@ -72,7 +63,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (isPublicRoute) {
-    return NextResponse.redirect(new URL('/profile', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   if (isPrivateRoute) {
