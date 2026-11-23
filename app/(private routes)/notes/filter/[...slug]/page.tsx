@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import NotesClient from "./Notes.client";
-import { fetchNotes } from '@/lib/api/clientApi'
+import { fetchNotes } from '@/lib/api/serverApi'
 import type { NoteTag } from "@/types/note";
 
 type NotesByCategoryProps = {
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: NotesByCategoryProps): Promis
     openGraph: {
       title: `Note: ${currentTag}`,
       description: `${currentTag}`,
-      url: `https://notehub.com/notes/filter/${currentTag}`,
+      url: `https://09-auth-fu9k.vercel.app/notes/filter/${currentTag}`,
       images: [
         {
           url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
