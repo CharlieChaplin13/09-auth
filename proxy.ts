@@ -31,10 +31,7 @@ export async function proxy(request: NextRequest) {
         const parsedCookies = [];
         for (const cookieStr of cookieArray) {
           const parsed = parseSetCookie(cookieStr);
-          
-          if (parsed.value) {
-            parsedCookies.push(parsed);
-			    }
+          parsedCookies.push(parsed);
         }
 
         if (isPublicRoute) {
@@ -50,6 +47,12 @@ export async function proxy(request: NextRequest) {
         }
       }
     } catch {
+      if (isPrivateRoute) {
+          return NextResponse.redirect(new URL('/sign-in', request.url));
+        }
+        if (isPublicRoute) {
+          return NextResponse.next();
+        }
       }
     }
 
